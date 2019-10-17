@@ -16,7 +16,7 @@ function Home() {
 
   useEffect(() => {
     getBlock();
-  });
+  }, []);
 
   return blocks.map(block => <p key={block.hash}>{block.hash}</p>);
 }
