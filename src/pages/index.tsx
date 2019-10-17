@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
-import { web3Provider } from "../util/web3";
+import { getLatestBlocks } from "../util/web3";
 
 function Home() {
-  const [block, setBlock] = useState(0);
+  const [blocks, setBlocks] = useState([]);
 
   async function getBlock() {
     try {
-      const blockNumber = await web3Provider.eth.getBlockNumber();
-      setBlock(blockNumber);
+      const blocks = await getLatestBlocks(10);
+      // @ts-ignore
+      setBlocks(blocks);
     } catch (err) {
       console.error(err);
     }
@@ -17,7 +18,7 @@ function Home() {
     getBlock();
   });
 
-  return `Block: ${block}`;
+  return blocks.map(block => <p key={block.hash}>{block.hash}</p>);
 }
 
 export default Home;
