@@ -1,0 +1,21 @@
+{
+  "name": "ethereum-explorer",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "9.1.1",
+    "react": "16.10.2",
+    "react-dom": "16.10.2",
+    "styled-components": "4.4.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.9",
+    "babel-plugin-styled-components": "1.10.6",
+    "typescript": "^3.6.4"
+  }
+}
