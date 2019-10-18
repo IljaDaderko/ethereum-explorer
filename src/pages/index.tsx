@@ -32,20 +32,24 @@ function Home() {
     <Fragment>
       <h1>Latest Blocks</h1>
       {blocks.map(block => (
-        <Link key={block.hash} href="/block/[hash]" as={`/block/${block.hash}`}>
-          <a>{block.hash}</a>
-        </Link>
+        <Fragment key={block.hash}>
+          <Link href="/block/[hash]" as={`/block/${block.hash}`}>
+            <a>{block.hash}</a>
+          </Link>
+          <br />
+          <br />
+        </Fragment>
       ))}
 
       <h1>Latest Transactions</h1>
       {transactions.map(transaction => (
-        <Link
-          key={transaction.hash}
-          href="/transaction/[hash]"
-          as={`/transaction/${transaction.hash}`}
-        >
-          <a>{transaction.hash}</a>
-        </Link>
+        <Fragment key={transaction.hash}>
+          <Link href="/transaction/[hash]" as={`/transaction/${transaction.hash}`}>
+            <a>{transaction.hash}</a>
+          </Link>
+          <br />
+          <br />
+        </Fragment>
       ))}
     </Fragment>
   );
