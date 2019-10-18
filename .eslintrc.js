@@ -23,6 +23,9 @@ module.exports = {
     'react/jsx-indent': 0,
     'react/jsx-props-no-spreading': 0,
     'react/jsx-no-literals': 0,
+    'react/jsx-max-props-per-line': 0,
+    'react/jsx-sort-props': 0,
+    'react/jsx-indent-props': 0,
 
     '@typescript-eslint/explicit-function-return-type': 0,
     '@typescript-eslint/ban-ts-ignore': 'warn'

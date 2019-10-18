@@ -1,7 +1,9 @@
+import Link from 'next/link';
 import React, { Fragment, useEffect, useState } from 'react';
 import { Transaction } from 'web3-core';
 import { Block } from 'web3-eth';
-import { getLatestBlocks, getTransactions } from '../util/web3';
+import { getLatestBlocks } from '../util/blocks';
+import { getLatestTransactions } from '../util/transactions';
 
 function Home() {
   const [blocks, setBlocks] = useState<Block[]>([]);
@@ -10,8 +12,7 @@ function Home() {
   async function fetchBlocks() {
     try {
       const blocks = await getLatestBlocks(10);
-      const lastTxHashes = blocks[0].transactions.slice(0, 10) as string[];
-      const transactions = await getTransactions(lastTxHashes);
+      const transactions = await getLatestTransactions(10);
       setBlocks(blocks);
       setTransactions(transactions);
     } catch (err) {
@@ -31,12 +32,20 @@ function Home() {
     <Fragment>
       <h1>Latest Blocks</h1>
       {blocks.map(block => (
-        <p key={block.hash}>{block.hash}</p>
+        <Link key={block.hash} href="/block/[hash]" as={`/block/${block.hash}`}>
+          <a>{block.hash}</a>
+        </Link>
       ))}
 
       <h1>Latest Transactions</h1>
       {transactions.map(transaction => (
-        <p key={transaction.hash}>{transaction.hash}</p>
+        <Link
+          key={transaction.hash}
+          href="/transaction/[hash]"
+          as={`/transaction/${transaction.hash}`}
+        >
+          <a>{transaction.hash}</a>
+        </Link>
       ))}
     </Fragment>
   );
