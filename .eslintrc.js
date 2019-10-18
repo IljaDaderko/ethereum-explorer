@@ -22,7 +22,9 @@ module.exports = {
     'react/jsx-fragments': ['error', 'element'],
     'react/jsx-indent': 0,
     'react/jsx-props-no-spreading': 0,
+    'react/jsx-no-literals': 0,
 
-    '@typescript-eslint/explicit-function-return-type': 0
+    '@typescript-eslint/explicit-function-return-type': 0,
+    '@typescript-eslint/ban-ts-ignore': 'warn'
   }
 };

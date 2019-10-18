@@ -1,9 +1,9 @@
-import Document from 'next/document';
+import Document, { DocumentContext } from 'next/document';
 import React, { Fragment } from 'react';
 import { ServerStyleSheet } from 'styled-components';
 
 class CoreDocument extends Document {
-  static async getInitialProps(ctx) {
+  static async getInitialProps(ctx: DocumentContext) {
     const sheet = new ServerStyleSheet();
     const originalRenderPage = ctx.renderPage;
 
