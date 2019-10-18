@@ -1,6 +1,6 @@
-import Document from "next/document";
-import { Fragment } from "react";
-import { ServerStyleSheet } from "styled-components";
+import Document from 'next/document';
+import React, { Fragment } from 'react';
+import { ServerStyleSheet } from 'styled-components';
 
 class CoreDocument extends Document {
   static async getInitialProps(ctx) {

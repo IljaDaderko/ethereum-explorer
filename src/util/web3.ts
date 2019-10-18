@@ -1,11 +1,9 @@
-import Web3 from "web3";
+import Web3 from 'web3';
 
 /**
  * Create web3 provider with given provider
  */
-export const web3Provider = Web3.givenProvider
-  ? new Web3(Web3.givenProvider)
-  : undefined;
+export const web3Provider = Web3.givenProvider ? new Web3(Web3.givenProvider) : undefined;
 
 /**
  * Get latest block number
@@ -24,10 +22,10 @@ export async function getBlocks(
   fromBlockNumber: number,
   toBlockNumber: number
 ): Promise<any[]> {
-  return new Promise(async (resolve, reject) => {
+  return new Promise((resolve, reject) => {
     const blockLength = toBlockNumber - fromBlockNumber;
     if (blockLength > 50 || blockLength < 1) {
-      throw new Error("getBlocks: Invalid block range");
+      throw new Error('getBlocks: Invalid block range');
     }
     const blocks = [];
     const batch = new web3Provider.eth.BatchRequest();
@@ -55,6 +53,6 @@ export async function getBlocks(
  */
 export async function getLatestBlocks(limit: number) {
   const latestBlockNumber = await getLatestBlockNumber();
-  const blocks = await getBlocks(latestBlockNumber - 10, latestBlockNumber);
+  const blocks = await getBlocks(latestBlockNumber - limit, latestBlockNumber);
   return blocks.reverse();
 }

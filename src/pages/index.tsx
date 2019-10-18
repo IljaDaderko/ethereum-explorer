@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { getLatestBlocks } from "../util/web3";
+import React, { useEffect, useState } from 'react';
+import { getLatestBlocks } from '../util/web3';
 
 function Home() {
   const [blocks, setBlocks] = useState([]);
@@ -9,7 +9,7 @@ function Home() {
       const blocks = await getLatestBlocks(10);
       setBlocks(blocks);
     } catch (err) {
-      console.error(err);
+      alert(err);
     }
   }
 
