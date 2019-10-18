@@ -10,8 +10,12 @@ function BlockPage() {
 
   async function fetchBlock() {
     if (typeof hash === 'string') {
-      const result = await getBlock(hash);
-      setBlock(result);
+      try {
+        const result = await getBlock(hash);
+        setBlock(result);
+      } catch (err) {
+        alert(err.message);
+      }
     }
   }
 

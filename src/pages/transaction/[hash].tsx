@@ -10,8 +10,12 @@ function TransactionPage() {
 
   async function fetchTransaction() {
     if (typeof hash === 'string') {
-      const result = await getTransaction(hash);
-      setTransaction(result);
+      try {
+        const result = await getTransaction(hash);
+        setTransaction(result);
+      } catch (err) {
+        alert(err.message);
+      }
     }
   }
 

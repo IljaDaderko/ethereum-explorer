@@ -16,7 +16,7 @@ function Home() {
       setBlocks(blocks);
       setTransactions(transactions);
     } catch (err) {
-      alert(err);
+      alert(err.message);
     }
   }
 
