@@ -11,46 +11,50 @@ export const web3Provider = Web3.givenProvider
  * Get latest block number
  */
 export async function getLatestBlockNumber() {
-  try {
-    const blockNumber = await web3Provider.eth.getBlockNumber();
-    return blockNumber;
-  } catch (err) {
-    console.error(err);
-  }
+  const blockNumber = await web3Provider.eth.getBlockNumber();
+  return blockNumber;
+}
+
+/**
+ * Get blocks
+ * @param fromBlockNumber block number to start from
+ * @param toBlockNumber block number to stop at
+ */
+export async function getBlocks(
+  fromBlockNumber: number,
+  toBlockNumber: number
+): Promise<any[]> {
+  return new Promise(async (resolve, reject) => {
+    const blockLength = toBlockNumber - fromBlockNumber;
+    if (blockLength > 50 || blockLength < 1) {
+      throw new Error("getBlocks: Invalid block range");
+    }
+    const blocks = [];
+    const batch = new web3Provider.eth.BatchRequest();
+    for (let i = fromBlockNumber; i <= toBlockNumber; i++) {
+      batch.add(
+        web3Provider.eth.getBlock.request(i, (err, data) => {
+          if (err) {
+            reject(err);
+          } else if (data) {
+            blocks.push(data);
+            if (blocks.length === blockLength) {
+              resolve(blocks);
+            }
+          }
+        })
+      );
+    }
+    batch.execute();
+  });
 }
 
 /**
  * Get latest blocks
- * @param blocksAgo how many blocks back to go from the current one
+ * @param limit how many latest blocks to fetch
  */
-export async function getLatestBlocks(blocksAgo: number) {
-  return new Promise(async (resolve, reject) => {
-    const blocks = [];
-
-    try {
-      const latestBlockNumber = await getLatestBlockNumber();
-      const blockNumberRange = [...new Array(blocksAgo)].map((_, index) => {
-        return latestBlockNumber - index;
-      });
-      const batch = new web3Provider.eth.BatchRequest();
-      blockNumberRange.forEach(blockNumber => {
-        batch.add(
-          web3Provider.eth.getBlock.request(blockNumber, (err, data) => {
-            if (err) {
-              reject(err);
-            } else if (data) {
-              blocks.push(data);
-              if (blocks.length === blocksAgo) {
-                resolve(blocks);
-              }
-            }
-          })
-        );
-      });
-      batch.execute();
-    } catch (err) {
-      console.error(err);
-      reject(err);
-    }
-  });
+export async function getLatestBlocks(limit: number) {
+  const latestBlockNumber = await getLatestBlockNumber();
+  const blocks = await getBlocks(latestBlockNumber - 10, latestBlockNumber);
+  return blocks.reverse();
 }
