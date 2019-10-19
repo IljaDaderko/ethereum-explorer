@@ -2,6 +2,7 @@ import App from 'next/app';
 import React, { Fragment } from 'react';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyles from '../components/GlobalStyles';
+import Layout from '../components/Layout';
 import { darkTheme } from '../util/theme';
 
 class CoreApp extends App {
@@ -12,7 +13,9 @@ class CoreApp extends App {
       <ThemeProvider theme={darkTheme}>
         <Fragment>
           <GlobalStyles />
-          <Component {...pageProps} />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
         </Fragment>
       </ThemeProvider>
     );

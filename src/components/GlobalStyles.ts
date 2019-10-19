@@ -3,7 +3,12 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
   body {
-    background-color: ${props => props.theme.background}
+    background-color: ${({ theme }) => theme.bodyBackground};
+    color: ${({ theme }) => theme.bodyColor};
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    font-family: 'Montserrat', 'Helvetica', sans-serif;
   }
 `;
 

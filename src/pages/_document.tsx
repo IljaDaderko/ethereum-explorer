@@ -1,4 +1,4 @@
-import Document, { DocumentContext } from 'next/document';
+import Document, { DocumentContext, Head, Main, NextScript } from 'next/document';
 import React, { Fragment } from 'react';
 import { ServerStyleSheet } from 'styled-components';
 
@@ -27,6 +27,29 @@ class CoreDocument extends Document {
     } finally {
       sheet.seal();
     }
+  }
+
+  render() {
+    return (
+      <html lang="en">
+        <Head>
+          <link
+            href="https://fonts.googleapis.com/css?family=Montserrat:500,600,700&display=swap"
+            rel="stylesheet"
+          />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+          />
+          <title>Ethereum Explorer</title>
+        </Head>
+
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </html>
+    );
   }
 }
 

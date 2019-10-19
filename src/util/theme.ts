@@ -1,3 +1,4 @@
 export const darkTheme = {
-  background: '#222222'
+  bodyBackground: '#222222',
+  bodyColor: '#888888'
 };
