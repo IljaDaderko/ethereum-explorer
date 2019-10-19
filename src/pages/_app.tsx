@@ -1,20 +1,19 @@
 import App from 'next/app';
-import React from 'react';
+import React, { Fragment } from 'react';
 import { ThemeProvider } from 'styled-components';
-
-const theme = {
-  colors: {
-    primary: '#0070f3'
-  }
-};
+import GlobalStyles from '../components/GlobalStyles';
+import { darkTheme } from '../util/theme';
 
 class CoreApp extends App {
   render() {
     const { Component, pageProps } = this.props;
 
     return (
-      <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
+      <ThemeProvider theme={darkTheme}>
+        <Fragment>
+          <GlobalStyles />
+          <Component {...pageProps} />
+        </Fragment>
       </ThemeProvider>
     );
   }

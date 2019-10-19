@@ -1,3 +1,5 @@
-module.exports = {
-  dir: "./src"
-};
+const withCSS = require('@zeit/next-css');
+
+module.exports = withCSS({
+  dir: './src'
+});
