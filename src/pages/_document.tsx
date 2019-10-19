@@ -41,7 +41,6 @@ class CoreDocument extends Document {
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
-          <title>Ethereum Explorer</title>
         </Head>
 
         <body>

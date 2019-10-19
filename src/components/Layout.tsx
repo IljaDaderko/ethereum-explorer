@@ -6,7 +6,11 @@ interface Props {
 }
 
 const Main = styled.main`
-  max-width: 1240px;
+  width: 100%;
+  max-width: 1240px !important;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
 `;
 
 function Layout({ children }: Props) {

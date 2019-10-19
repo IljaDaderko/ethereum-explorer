@@ -2,13 +2,24 @@ import 'normalize.css/normalize.css';
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
+  * {
+    box-sizing: border-box;
+  }
+
+  #__next {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+  }
+
   body {
     background-color: ${({ theme }) => theme.bodyBackground};
     color: ${({ theme }) => theme.bodyColor};
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
     font-family: 'Montserrat', 'Helvetica', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 500;
   }
 `;
 
