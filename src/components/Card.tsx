@@ -4,7 +4,7 @@ const Card = styled.div`
   background-color: ${({ theme }) => theme.cardBackground};
   box-shadow: 0 15px 45px 0 rgb(0, 0, 0, 0.05);
   border-radius: 20px;
-  padding: 40px;
+  padding: ${({ theme }) => theme.cardPadding};
   overflow: hidden;
   max-width: 520px;
 `;
