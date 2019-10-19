@@ -1,3 +1,4 @@
+import { AnimatePresence } from 'framer-motion';
 import App from 'next/app';
 import React, { Fragment } from 'react';
 import { ThemeProvider } from 'styled-components';
@@ -7,14 +8,16 @@ import { darkTheme } from '../util/theme';
 
 class CoreApp extends App {
   render() {
-    const { Component, pageProps } = this.props;
+    const { Component, pageProps, router } = this.props;
 
     return (
       <ThemeProvider theme={darkTheme}>
         <Fragment>
           <GlobalStyles />
           <Layout>
-            <Component {...pageProps} />
+            <AnimatePresence exitBeforeEnter>
+              <Component {...pageProps} key={router.route} />
+            </AnimatePresence>
           </Layout>
         </Fragment>
       </ThemeProvider>
