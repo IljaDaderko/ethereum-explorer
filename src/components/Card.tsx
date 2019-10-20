@@ -6,6 +6,7 @@ const Card = styled.div`
   border-radius: 20px;
   padding: ${({ theme }) => theme.cardPadding};
   overflow: hidden;
+  width: 50%;
   max-width: 520px;
 `;
 

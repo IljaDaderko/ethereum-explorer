@@ -16,6 +16,7 @@ const GlobalStyles = createGlobalStyle`
     background-color: ${({ theme }) => theme.bodyBackground};
     color: ${({ theme }) => theme.bodyColor};
     font-family: 'Montserrat', 'Helvetica', sans-serif;
+    letter-spacing: 1px;
   }
 
   h1, h2, h3, h4, h5, h6 {

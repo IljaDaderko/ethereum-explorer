@@ -9,5 +9,9 @@ export const darkTheme = {
 
   dividerColor: '#444444',
 
-  rowLinkHoverBackground: 'rgba(243, 243, 243, 0.1)'
+  rowLinkHoverBackground: 'rgba(243, 243, 243, 0.1)',
+
+  textTitleColor: '#ffffff',
+  textCaptionColor: '#A2A2A2',
+  textBodyColor: '#999999'
 };

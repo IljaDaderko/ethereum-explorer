@@ -13,6 +13,7 @@ const LinkContainer = styled.a`
   padding: 15px ${({ theme }) => theme.cardPadding};
   margin: 0 -${({ theme }) => theme.cardPadding};
   transition: background-color 0.1s ease-in-out;
+  align-items: center;
 
   &:hover {
     background-color: ${({ theme }) => theme.rowLinkHoverBackground};

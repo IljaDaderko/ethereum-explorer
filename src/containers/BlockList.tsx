@@ -1,10 +1,21 @@
 import React, { Fragment, useEffect, useState } from 'react';
+import TimeAgo from 'react-timeago';
+import styled from 'styled-components';
 import { Block } from 'web3-eth';
 import Card from '../components/Card';
 import Divider from '../components/Divider';
 import Heading from '../components/Heading';
+import RowIcon from '../components/RowIcon';
 import RowLink from '../components/RowLink';
+import Text from '../components/Text';
 import { getLatestBlocks } from '../util/blocks';
+
+const Data = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+`;
 
 function BlockList() {
   const [blocks, setBlocks] = useState<Block[]>([]);
@@ -26,6 +37,8 @@ function BlockList() {
     return <p>Loading ...</p>;
   }
 
+  console.log(blocks);
+
   return (
     <Card>
       <Heading>Blocks</Heading>
@@ -33,7 +46,18 @@ function BlockList() {
       {blocks.map(block => (
         <Fragment key={block.hash}>
           <RowLink href="/block/[hash]" as={`/block/${block.hash}`}>
-            <span>{block.hash}</span>
+            <RowIcon src="/images/block.svg" alt="block icon" />
+
+            <Data>
+              <div>
+                <Text variant="title" block>{`# ${block.number}`}</Text>
+                <Text variant="body">{`${block.transactions.length} transactions`}</Text>
+              </div>
+
+              <Text variant="caption">
+                <TimeAgo date={(block.timestamp as number) * 1000} />
+              </Text>
+            </Data>
           </RowLink>
         </Fragment>
       ))}

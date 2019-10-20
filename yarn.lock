@@ -880,6 +880,13 @@
     "@types/prop-types" "*"
     "@types/react" "*"
 
+"@types/react-timeago@^4.1.1":
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/@types/react-timeago/-/react-timeago-4.1.1.tgz#14c24cb8c1299379d9c2941ca3373f849d8bc78a"
+  integrity sha512-Rokr09qNqkKXpKwrDVYzGz/mGlmgX5ZdxAJToUehMyRHXEwtXUUNaAZur5RoZ5JtukBwXKzDevS72Axtjm+yKg==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react@*", "@types/react@16.9.9":
   version "16.9.9"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.9.9.tgz#a62c6f40f04bc7681be5e20975503a64fe783c3a"
@@ -5655,6 +5662,11 @@ react-is@^16.6.0, react-is@^16.8.1:
   version "16.10.2"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.10.2.tgz#984120fd4d16800e9a738208ab1fba422d23b5ab"
   integrity sha512-INBT1QEgtcCCgvccr5/86CfD71fw9EPmDxgiJX4I2Ddr6ZsV6iFXsuby+qWJPtmNuMY0zByTsG4468P7nHuNWA==
+
+react-timeago@^4.4.0:
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/react-timeago/-/react-timeago-4.4.0.tgz#4520dd9ba63551afc4d709819f52b14b9343ba2b"
+  integrity sha512-Zj8RchTqZEH27LAANemzMR2RpotbP2aMd+UIajfYMZ9KW4dMcViUVKzC7YmqfiqlFfz8B0bjDw2xUBjmcxDngA==
 
 react@16.10.2:
   version "16.10.2"
