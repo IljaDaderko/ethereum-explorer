@@ -3,20 +3,6 @@ import React from 'react';
 import styled from 'styled-components';
 import BlockList from '../containers/BlockList';
 
-const animationVariants = {
-  initial: { y: 0, opacity: 1 },
-  enter: {
-    y: 0,
-    opacity: 1,
-    transition: { duration: 0.3, ease: [0.48, 0.15, 0.25, 0.96] }
-  },
-  exit: {
-    y: -30,
-    opacity: 0,
-    transition: { duration: 0.3, ease: [0.48, 0.15, 0.25, 0.96] }
-  }
-};
-
 const Container = styled(motion.div)`
   display: flex;
   width: 100%;
@@ -25,7 +11,7 @@ const Container = styled(motion.div)`
 
 function Home() {
   return (
-    <Container initial="initial" animate="enter" exit="exit" variants={animationVariants}>
+    <Container initial={{ opacity: 1 }} exit={{ opacity: 0 }}>
       <BlockList />
     </Container>
   );

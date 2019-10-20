@@ -30,7 +30,11 @@ const Data = styled.div`
 const TextPlaceholder = styled(Shimmer)`
   height: 12px;
   width: 100px;
-  margin: 4px 0;
+  margin: 5px 0;
+`;
+
+const TransactionPlaceholder = styled(TextPlaceholder)`
+  width: 130px;
 `;
 
 function BlockListPlaceholder({ amount }: Props) {
@@ -44,7 +48,7 @@ function BlockListPlaceholder({ amount }: Props) {
             <Data>
               <div>
                 <TextPlaceholder />
-                <TextPlaceholder />
+                <TransactionPlaceholder />
               </div>
 
               <TextPlaceholder />

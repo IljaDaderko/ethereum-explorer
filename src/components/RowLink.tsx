@@ -30,9 +30,15 @@ const Href = styled.a`
   align-items: center;
   height: 80px;
 
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: ${({ theme }) => theme.rowLinkHoverBackground};
     cursor: pointer;
+    outline: none;
+
+    figure img {
+      transform: scale(1.1);
+    }
   }
 `;
 
@@ -44,7 +50,7 @@ function RowLink({ href, as, children, placeholder }: Props) {
       transition={{ ease: 'easeInOut', duration: 0.5 }}
     >
       <Link href={href} as={as}>
-        <Href>{children}</Href>
+        <Href href={href}>{children}</Href>
       </Link>
     </motion.div>
   );
