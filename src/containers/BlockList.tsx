@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react';
 import TimeAgo from 'react-timeago';
 import styled from 'styled-components';
 import { Block } from 'web3-eth';
+import BlockListPlaceholder from '../components/BlockListPlaceholder';
 import Card from '../components/Card';
 import Divider from '../components/Divider';
 import Heading from '../components/Heading';
@@ -33,34 +34,32 @@ function BlockList() {
     fetchBlocks();
   }, []);
 
-  if (!blocks.length) {
-    return <p>Loading ...</p>;
-  }
-
-  console.log(blocks);
-
   return (
     <Card>
       <Heading>Blocks</Heading>
       <Divider />
-      {blocks.map(block => (
-        <Fragment key={block.hash}>
-          <RowLink href="/block/[hash]" as={`/block/${block.hash}`}>
-            <RowIcon src="/images/block.svg" alt="block icon" />
+      {blocks.length ? (
+        blocks.map(block => (
+          <Fragment key={block.hash}>
+            <RowLink href="/block/[hash]" as={`/block/${block.hash}`}>
+              <RowIcon src="/images/block.svg" alt="block icon" />
 
-            <Data>
-              <div>
-                <Text variant="title" block>{`# ${block.number}`}</Text>
-                <Text variant="body">{`${block.transactions.length} transactions`}</Text>
-              </div>
+              <Data>
+                <div>
+                  <Text variant="title" block>{`# ${block.number}`}</Text>
+                  <Text variant="body">{`${block.transactions.length} transactions`}</Text>
+                </div>
 
-              <Text variant="caption">
-                <TimeAgo date={(block.timestamp as number) * 1000} />
-              </Text>
-            </Data>
-          </RowLink>
-        </Fragment>
-      ))}
+                <Text variant="caption">
+                  <TimeAgo date={(block.timestamp as number) * 1000} />
+                </Text>
+              </Data>
+            </RowLink>
+          </Fragment>
+        ))
+      ) : (
+        <BlockListPlaceholder />
+      )}
     </Card>
   );
 }
