@@ -4,6 +4,10 @@ import styled from 'styled-components';
 import RowLink from './RowLink';
 import Shimmer from './Shimmer';
 
+interface Props {
+  amount: number;
+}
+
 const Wrapper = styled.div`
   pointer-events: none;
 `;
@@ -29,12 +33,12 @@ const TextPlaceholder = styled(Shimmer)`
   margin: 4px 0;
 `;
 
-function BlockListPlaceholder() {
+function BlockListPlaceholder({ amount }: Props) {
   return (
     <Fragment>
-      {[...Array(10)].map(() => (
+      {[...Array(amount)].map(() => (
         <Wrapper key={`placeholder-${Math.random()}`}>
-          <RowLink href="" as="">
+          <RowLink placeholder href="" as="">
             <IconPlaceholder />
 
             <Data>

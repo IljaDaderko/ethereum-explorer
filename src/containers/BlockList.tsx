@@ -20,10 +20,11 @@ const Data = styled.div`
 
 function BlockList() {
   const [blocks, setBlocks] = useState<Block[]>([]);
+  const [amount, setAmount] = useState(10);
 
   async function fetchBlocks() {
     try {
-      const blocks = await getLatestBlocks(10);
+      const blocks = await getLatestBlocks(amount);
       setBlocks(blocks);
     } catch (err) {
       alert(err.message);
@@ -58,7 +59,7 @@ function BlockList() {
           </Fragment>
         ))
       ) : (
-        <BlockListPlaceholder />
+        <BlockListPlaceholder amount={amount} />
       )}
     </Card>
   );

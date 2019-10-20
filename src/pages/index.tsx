@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import BlockList from '../containers/BlockList';
 
 const animationVariants = {
-  initial: { y: 30, opacity: 0 },
+  initial: { y: 0, opacity: 1 },
   enter: {
     y: 0,
     opacity: 1,

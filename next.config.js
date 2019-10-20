@@ -1,5 +1,9 @@
 const withCSS = require('@zeit/next-css');
+const withImages = require('next-images');
 
-module.exports = withCSS({
-  dir: './src'
-});
+module.exports = withCSS(
+  withImages({
+    inlineImageLimit: 100000,
+    dir: './src'
+  })
+);

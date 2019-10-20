@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
@@ -6,9 +7,22 @@ interface Props {
   href: string;
   as: string;
   children: ReactNode | ReactNode[];
+  placeholder?: boolean;
 }
 
-const LinkContainer = styled.a`
+const animationVariants = {
+  initial: { opacity: 0 },
+  enter: {
+    opacity: 1,
+    transition: { duration: 1, ease: [0.48, 0.15, 0.25, 0.96] }
+  },
+  exit: {
+    opacity: 0,
+    transition: { duration: 1, ease: [0.48, 0.15, 0.25, 0.96] }
+  }
+};
+
+const Href = styled.a`
   display: flex;
   padding: 15px ${({ theme }) => theme.cardPadding};
   margin: 0 -${({ theme }) => theme.cardPadding};
@@ -22,11 +36,17 @@ const LinkContainer = styled.a`
   }
 `;
 
-function RowLink({ href, as, children }: Props) {
+function RowLink({ href, as, children, placeholder }: Props) {
   return (
-    <Link href={href} as={as}>
-      <LinkContainer>{children}</LinkContainer>
-    </Link>
+    <motion.div
+      initial={!placeholder && { opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ ease: 'easeInOut', duration: 0.5 }}
+    >
+      <Link href={href} as={as}>
+        <Href>{children}</Href>
+      </Link>
+    </motion.div>
   );
 }
 
