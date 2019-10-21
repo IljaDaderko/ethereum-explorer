@@ -9,7 +9,8 @@ const GlobalStyles = createGlobalStyle`
   #__next {
     width: 100vw;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
   }
 
   body {
