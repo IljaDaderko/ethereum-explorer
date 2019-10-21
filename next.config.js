@@ -4,6 +4,7 @@ const withImages = require('next-images');
 module.exports = withCSS(
   withImages({
     inlineImageLimit: 100000,
-    dir: './src'
+    dir: './src',
+    outDir: 'dist'
   })
 );
